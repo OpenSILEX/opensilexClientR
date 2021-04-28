@@ -1,0 +1,40 @@
+Package: opensilexClientR
+Title: opensilex Client R
+Version: 1.0.0
+Authors@R: c(
+    person("Arnaud", "Charleroy", email = "arnaud.charleroy@inrae.fr", role = "cre"),
+    person("Isabelle", "Sanchez", email = "isabelle.sanchez@inrae.fr", role = "aut"),
+    person("Jean-Eudes", "Hollebecq", email = "jean-eudes.hollebecq@inrae.fr", role = "aut"),
+    person("Pascal", "Neveu", email = "pascal.neveu@inra.fr", role = "aut"))
+Maintainer: Arnaud Charleroy <arnaud.charleroy@inra.fr>
+Description: a set of functions to connect R to the opensilex web service API in OpenSILEX PHIS. You can retrieve  informations and data 
+   from experiment. If the user has an account on an instance of an OPENSILEX system information.
+Depends:
+    R (>= 3.2.0),
+    opensilexWSClientR (>= 2.2.0),
+    opensilexClientToolsR,
+    data.table
+License: GPL-3 | file LICENSE
+LazyData: TRUE
+Remotes:github::opensilex/opensilex-ws-client-r@2.2.0, github::opensilex/opensilexclienttoolsr@master
+Imports: 
+    ggplot2,
+    tidyr,
+    dplyr,
+    lubridate,
+    stringr,
+    jsonlite,
+    httr,
+    urltools,
+    logging,
+    openssl,
+    wicket,
+    tibble
+Suggests:
+    roxygen2,
+    knitr,
+    rmarkdown
+Author: Arnaud Charleroy [aut, cre]
+RoxygenNote: 7.1.0
+VignetteBuilder: knitr
+Encoding: UTF-8
