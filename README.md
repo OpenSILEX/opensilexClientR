@@ -117,18 +117,6 @@ getUserInformations()
 1. R Development Core Team (2018). R: A language and environment for statistical computing. R Foundation for
       Statistical Computing, Vienna, Austria. ISBN 3-900051-07-0, URL http://www.R-project.org.
 
-
-# Test
-
-You can give a test to the package using the available vignettes (/doc directory) and use the documentation. if you have some difficulties to retrieve the html vignettes, you can use https://htmlpreview.github.io on the github file paths:
-
-- [https://github.com/OpenSILEX/opensilexClientR/blob/1.0.0/doc/requestsWS2.html](https://htmlpreview.github.io/?https://github.com/OpenSILEX/opensilexClientR/blob/1.0.0/doc/requestsWS2.html)
-- [https://github.com/OpenSILEX/opensilexClientR/blob/1.0.0/doc/requestsWS1.html](https://htmlpreview.github.io/?https://github.com/OpenSILEX/opensilexClientR/blob/1.0.0/doc/requestsWS1.html)
-
-# Experimental functions
-
-- [https://github.com/OpenSILEX/opensilexClientR/blob/1.0.0/doc/postRequestsWS2.html](https://htmlpreview.github.io/?https://github.com/OpenSILEX/opensilexClientR/blob/1.0.0/doc/postRequestsWS2.html)
-
 # Citation
 
 You should cite the **opensilexClientR** package:
