@@ -2,8 +2,6 @@
 
  ![alt](https://shields.io/badge/R%20tested%20versions-3.4%20--%204.0.2-blue)
 
-PHIS client R 
-
 A set of functions to call with R to the Opensilex web service in OpenSILEX. You can retrieve data and metadata from experiments. User can access if he has an account on an instance of the Opensilex information system.
 
 in progress...
