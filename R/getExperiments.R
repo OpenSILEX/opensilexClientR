@@ -68,7 +68,7 @@ getVariablesByExperiment <- function( uri = NULL){
     
     operations <- opensilexWSClientR::getOperations()
    
-    searchVariablesByExp <-  operations$getUsedVariables(uri = "test-expe:abt_2004")
+    searchVariablesByExp <-  operations$getUsedVariables(uri = uri)
     resultVariablesByExp <- opensilexWSClientR::getDataAndMetadataFromResponse(searchVariablesByExp)  
     
     transformedData = data.table::rbindlist(
