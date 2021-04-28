@@ -13,7 +13,6 @@ To initialize a client request:
 - connectToOpenSILEX()
 - getExperiments()
 - getVariablesByExperiment()
-- getExperimentDesign()
   
  
 # Installation
