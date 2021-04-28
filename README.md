@@ -64,7 +64,7 @@ OpenSILEX relies on URI (Uniform Resource Identifier) to identify resources. As 
 
 <!-- When collecting data through the `getData` function, you will need to retrieve metadata of the variables through the `getVariables2` function if you want the label, unit and method used to create those data. -->
 
-# Connect
+# Connection
 
 Ask permission to request to the web service:
 
