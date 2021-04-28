@@ -10,9 +10,10 @@ To initialize a client request:
 - getExperiments()
 - getVariablesByExperiment()
 
-In progress...
-- getExperimentDesign()
+Functions in progress...
 
+- getExperimentDesign()
+- getData()
  
 # Installation
 
