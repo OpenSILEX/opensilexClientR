@@ -24,7 +24,7 @@ variables:
       - ".Renviron"
 
 .prepare_script_r: &prepare_script_r
-  image: "registry.forgemia.inra.fr/opensilex/data-analysis-visualisation/opensilexclientr/r-tidyverse:3.4.4"
+  image: "registry.forgemia.inra.fr/opensilex/data-analysis-visualisation/opensilexclientr/r-tidyverse:4.0.4"
  
 # create an archive 
 buildBinary:
