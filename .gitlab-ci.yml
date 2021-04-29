@@ -1,0 +1,114 @@
+# order of the different jobs
+stages:
+  - build
+  - document
+  - check
+  - test
+  - deploy
+
+# define system environment variables
+variables:
+  PACKAGE_VERSION: "1.1.1"
+  R_REPOS: "https://cloud.r-project.org"
+  R_LIBS : ".cache/install_deps" # dependencies cache
+  R_ENVIRON : "$CI_PROJECT_DIR/.Renviron" # R environment cache
+  R_TMP_USER: "$CI_PROJECT_DIR/tmp"  # temporary directory
+  R_IMG_LIB: "/usr/local/lib/R/site-library"  # temporary directory
+
+
+# Cache R directories in between jobs
+.cache_dependencies: &cache_dependencies
+    key: "$CI_COMMIT_REF_SLUG"
+    paths:
+      - ".cache/install_deps"
+      - ".Renviron"
+
+.prepare_script_r: &prepare_script_r
+  image: "registry.forgemia.inra.fr/opensilex/data-analysis-visualisation/opensilexclientr/r-tidyverse:3.4.4"
+ 
+# create an archive 
+buildBinary:
+  <<: *prepare_script_r
+  stage: build
+  script:
+   - R -e 'devtools::build(binary = TRUE)'
+
+# create an docker image 
+build:image:
+  image: docker:19.03.12
+  stage: build
+  services:
+    - docker:19.03.12-dind
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker info
+    - docker build -t $DOCKER_REGISTRY/opensilex/data-analysis-visualisation/opensilex-clients/opensilex-ws-r-client/r-tidyverse  --tag=registry.forgemia.inra.fr/opensilex/data-analysis-visualisation/opensilex-clients/opensilex-ws-r-client/r-tidyverse:4.0.4 --build-arg R_VERSION=4.0.4  .
+    - docker push $DOCKER_REGISTRY/opensilex/data-analysis-visualisation/opensilex-clients/opensilex-ws-r-client/r-tidyverse:4.0.4
+  rules:
+    - when: manual
+      allow_failure: true
+
+
+
+checkErrors:
+  <<: *prepare_script_r
+  stage: check
+  script:
+    - R -e '.libPaths()'
+    - mkdir -p $R_TMP_USER
+    - R -e 'tryCatch(if (!identical(devtools::check(document = FALSE, args = "--no-tests")[["errors"]], character(0))) system("mkdir -p $R_TMP_USER;touch $R_TMP_USER/errorsFail"), error = function(e) system("touch $R_TMP_USER/errorsFail"))'
+    - if [ -f $R_TMP_USER/errorsFail ]; then echo "Check Errors"; exit 1 ; else echo "No Errors"; fi
+
+checkWarnings:
+  <<: *prepare_script_r
+  allow_failure: true
+  stage: check
+  script:
+    - R -e '.libPaths()'
+    - mkdir -p $R_TMP_USER
+    - R -e 'tryCatch(if (!identical(devtools::check(document = FALSE, args = "--no-tests")[["warnings"]], character(0))) system("mkdir -p $R_TMP_USER;touch $R_TMP_USER/warningsFail"), error = function(e) system("touch $R_TMP_USER/warningsFail"))'
+    - if [ -f $R_TMP_USER/warningsFail ]; then echo "Check Warnings"; exit 1 ; else echo "No Warnings"; fi
+
+checkNotes:
+  <<: *prepare_script_r
+  allow_failure: true
+  stage: check
+  script:
+    - R -e '.libPaths()'
+    - mkdir -p $R_TMP_USER
+    - R -e 'tryCatch(if (!identical(devtools::check(document = FALSE, args = "--no-tests")[["notes"]], character(0))) system("mkdir -p $R_TMP_USER;touch $R_TMP_USER/notesFail"), error = function(e) system("touch $R_TMP_USER/notesFail"))'
+    - if [ -f $R_TMP_USER/notesFail ]; then echo "Check Notes"; exit 1 ; else echo "No Notes"; fi
+
+unitTests:
+  <<: *prepare_script_r
+  when: manual
+  stage: test
+  script:
+    - R -e '.libPaths()'
+    - mkdir -p $R_TMP_USER
+    - R -e 'if (any(as.data.frame(devtools::test())[["failed"]] > 0)) system("touch $R_TMP_USER/testsFail")
+    - if [ -f $R_TMP_USER/testsFail ]; then echo "Check Tests"; exit 1 ; else echo "Tests passed"; fi
+    
+codeCoverage:
+  <<: *prepare_script_r
+  allow_failure: true
+  when: manual
+  stage: test
+  script:
+    - R -e 'covr::codecov()'
+
+installFromGithub:
+  <<: *prepare_script_r
+  allow_failure: true
+  when: manual
+  stage: test
+  script:
+    - R -e 'source("https://install-github.me/r-lib/desc");desc<-desc::description$new();remotes::install_github("OpenSILEX/opensilexclientr", build_vignettes=TRUE,ref=desc$get("Version")[[1]])'
+
+
+installLocally:
+  <<: *prepare_script_r
+  stage: test
+  script:
+    - R -e 'options(repos =c(CRAN=Sys.getenv("R_REPOS")));devtools::install(build_vignettes=TRUE,dependencies = TRUE)'
