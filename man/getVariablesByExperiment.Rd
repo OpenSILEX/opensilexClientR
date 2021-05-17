@@ -16,17 +16,15 @@ WSResponse object
 retrieves the informations variables used in one xperiment
 }
 \details{
-You have to execute the \code{\link{connectToOpenSILEXWS}} function first to have access to the web
-service
+You have to execute the \code{\link{connectToOpenSILEXWS}} function first to have access to the Web
+Service
 }
 \examples{
 \donttest{
- connectToOpenSILEXWS( 
-                 username = "guestopensilex.org",
-                  password = "guest",
-          url = "http:/localhost:8666/rest")
- ExpVar<-getExperiment(
-        experimentURI ="test-expe:test-serre")
+ connectToOpenSILEXWS(username = "guest@opensilex.org",
+                      password = "guest",
+                      url = "http:/localhost:8666/rest")
+ ExpVar<-getExperiment(experimentURI ="test-expe:test-serre")
  ExpVar$data
 }
 }

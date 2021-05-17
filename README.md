@@ -2,7 +2,7 @@
 
  ![alt](https://shields.io/badge/R%20tested%20versions-3.4%20--%204.0.2-blue)
 
-A set of functions to call with R to the Opensilex web service in OpenSILEX. You can retrieve data and metadata from experiments. User can access if he has an account on an instance of the Opensilex information system.
+A set of functions to call with R to the OpenSilex web service in OpenSILEX. You can retrieve data and metadata from experiments. User can access if he/she has an account on an instance of the OpenSilex Information System.
 
 To initialize a client request:
 
@@ -26,6 +26,8 @@ install_github("OpenSILEX/opensilexClientR", build_vignettes=TRUE, ref="1.0.0")
 
 You can also download a tar.gz archive of "[1.0.0](https://github.com/OpenSILEX/opensilexClientR/tree/1.0.0)" version and install it with _install_packages()_.
 
+Do not forget to remove old versions of the dependencies to allow the installation of the library.
+
 This package use [Semantic Versioning Specification](https://semver.org/) for versioning tags.
 
 # Usage
@@ -44,20 +46,20 @@ help(package="opensilexClientR")
 # Generalities
 
 ## HTTP request
-This package performs request to PHIS Web Service. We can distinguish two kinds of request:  
-1.  GET requests that retrieve data from the web service.  
-2.  POST requests that send data to the web service.  
+This package performs request to openSILEX Web Service. We can distinguish two kinds of request:  
+1.  GET requests that retrieve data from the Web Service.  
+2.  POST requests that send data to the Web Service.  
 
-They are nammed accordingly to the HTTP method GET and POST associated to it.
+They are named accordingly to the HTTP method GET and POST associated to it.
 
 Because these functions rely on HTTP method, the first answer of the functions is the status of the request:  
-- 200 and family: means the request has succeded  
+- 200 and family: means the request has succeeded  
 - 300 and family: means the request was reoriented elsewhere  
 - 400 and family: means the request failed from your side (your fault)  
 - 500 and family: means that the request failed from the server (not your fault)  
   
 What is distinct between the functions is the value taken in the $data list.  
-Because this package aim at providing the most generic functions, the format has to be compatible with a lot of data structures. For examples list containing another list (a properties argument typically). That is to say, data.frames are not always compliant enough.
+Because this package aims at providing the most generic functions, the format has to be compatible with a lot of data structures. For example, list containing another list (a properties argument typically). That is to say, data.frames are not always compliant enough.
 
 ## Identifiers
 
@@ -67,14 +69,16 @@ OpenSILEX relies on URI (Uniform Resource Identifier) to identify resources. As 
 
 # Connection
 
-Ask permission to request to the web service:
+Ask permission to request to the Web Service:
 
 ```{r connect}
   # If you want to access to a private web service, you have to insert the address of the WS and the port
- opensilexClientR::connectToOpenSILEX(identifier="guest@opensilex.org", password="guest", url = "http://www.opensilex.org/rest")
+ opensilexClientR::connectToOpenSILEX(identifier="guest@opensilex.org", 
+                                      password="guest", 
+                                      url = "http://www.opensilex.org/rest")
 ```
 
-This token is handled automaticaly for you, but you can acces it using the following command :
+This token is handled automatically for you, but you can access it using the following command :
 
 ```{r get user info}
 getUserInformations()
@@ -96,7 +100,7 @@ getUserInformations()
   experimentVariables$data
 ```
 
-## Comming soon
+## Coming soon
 
 <!-- ##  ExperimentDesign
 

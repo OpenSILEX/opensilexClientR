@@ -4,10 +4,18 @@
 \alias{getExperiments}
 \title{retrieves the experiments from the web service}
 \usage{
-getExperiments(name = "", year = "", is_ended = NULL,
-  species = list(), factors = list(), projects = list(),
-  is_public = NULL, order_by = "name=asc", page = NULL,
-  page_size = NULL)
+getExperiments(
+  name = "",
+  year = "",
+  is_ended = NULL,
+  species = list(),
+  factors = list(),
+  projects = list(),
+  is_public = NULL,
+  order_by = "name=asc",
+  page = NULL,
+  page_size = NULL
+)
 }
 \arguments{
 \item{name}{character, search by the name of an experiment (optional)}
@@ -31,7 +39,8 @@ getExperiments(name = "", year = "", is_ended = NULL,
 \item{page_size}{numeric, number of elements by page (pagination Plant Breeding API)}
 }
 \value{
-WSResponse object
+WSResponse object. The $data item of the object returns a data-frame 
+        with experiments informations.
 }
 \description{
 Retrieves the available experiments and/or linked to a project
@@ -42,10 +51,9 @@ service
 }
 \examples{
 \donttest{
- connectToOpenSILEXWS( 
-                 username = "guestopensilex.org",
-                  password = "guest",
-   url = "http:/localhost:8666/rest")
+ connectToOpenSILEXWS(username = "guest@opensilex.org",
+                      password = "guest",
+                      url = "http:/localhost:8666/rest")
  expes <- getExperiments()
  expes$data
 }

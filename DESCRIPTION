@@ -16,7 +16,7 @@ Depends:
     data.table
 License: GPL-3 | file LICENSE
 LazyData: TRUE
-Remotes:github::opensilex/opensilex-ws-client-r@2.2.0, github::opensilex/opensilexclienttoolsr@master
+Remotes: github::opensilex/opensilex-ws-client-r@2.2.0, github::opensilex/opensilexclienttoolsr@master
 Imports: 
     ggplot2,
     tidyr,
@@ -35,6 +35,6 @@ Suggests:
     knitr,
     rmarkdown
 Author: Arnaud Charleroy [aut, cre]
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Encoding: UTF-8

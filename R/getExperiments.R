@@ -3,7 +3,7 @@
 # Objective: functions to get the experiments service from WS
 # Authors: A. Charleroy, I.Sanchez, J.E.Hollebecq
 # Creation: 24/01/2019
-# Update: 06/01/2020 (by I.Sanchez)
+# Update: 17/05/2021 (by I.Sanchez)
 #-------------------------------------------------------------------------------
 
 # ##' @title getExperimentDesign
@@ -46,18 +46,16 @@
 ##' @param uri URI of the experiment
 ##' @return WSResponse object
 ##' @seealso http://docs.brapi.apiary.io/#introduction/url-structure
-##' @details You have to execute the \code{\link{connectToOpenSILEXWS}} function first to have access to the web
-##' service
+##' @details You have to execute the \code{\link{connectToOpenSILEXWS}} function first to have access to the Web
+##' Service
 ##' @seealso You have to install the opensilexWSClientR before running any 
 ##'          request on OpenSILEX web service.
 ##' @examples
 ##' \donttest{
-##'  connectToOpenSILEXWS( 
-##'                  username = "guestopensilex.org",
-##'                   password = "guest",
-##'           url = "http:/localhost:8666/rest")
-##'  ExpVar<-getExperiment(
-##'         experimentURI ="test-expe:test-serre")
+##'  connectToOpenSILEXWS(username = "guest@opensilex.org",
+##'                       password = "guest",
+##'                       url = "http:/localhost:8666/rest")
+##'  ExpVar<-getExperiment(experimentURI ="test-expe:test-serre")
 ##'  ExpVar$data
 ##' }
 ##' @export
@@ -94,7 +92,8 @@ getVariablesByExperiment <- function( uri = NULL){
 ##' @param order_by character, search by the place of an experiment (optional)
 ##' @param page numeric, displayed page (pagination Plant Breeding API)
 ##' @param page_size numeric, number of elements by page (pagination Plant Breeding API)
-##' @return WSResponse object
+##' @return WSResponse object. The $data item of the object returns a data-frame 
+##'         with experiments informations.
 ##' @seealso http://docs.brapi.apiary.io/#introduction/url-structure
 ##' @details You have to execute the \code{\link{connectToOpenSILEXWS}} function first to have access to the web
 ##' service
@@ -103,15 +102,16 @@ getVariablesByExperiment <- function( uri = NULL){
 ##'          request on OpenSILEX web service.
 ##' @examples
 ##' \donttest{
-##'  connectToOpenSILEXWS( 
-##'                  username = "guestopensilex.org",
-##'                   password = "guest",
-##'    url = "http:/localhost:8666/rest")
+##'  connectToOpenSILEXWS(username = "guest@opensilex.org",
+##'                       password = "guest",
+##'                       url = "http:/localhost:8666/rest")
 ##'  expes <- getExperiments()
 ##'  expes$data
 ##' }
 ##' @export
-getExperiments <- function(name = "", year = "",is_ended = NULL,species = list(),factors = list(),projects = list(),is_public = NULL, order_by = "name=asc",page = NULL,page_size = NULL){
+getExperiments <- function(name = "", year = "",is_ended = NULL,species = list(),
+                           factors = list(),projects = list(),is_public = NULL, 
+                           order_by = "name=asc",page = NULL,page_size = NULL){
   # set Page
   if(is.null(page)){
     page  <- get("DEFAULT_PAGE", opensilexWSClientR:::configWS)
@@ -123,8 +123,12 @@ getExperiments <- function(name = "", year = "",is_ended = NULL,species = list()
   }
   
   operations <- opensilexWSClientR::getOperations()
-  searchExp <- operations$searchExperiments(name =name , year =year ,is_ended = is_ended,species = species,factors = factors,projects = 
-                                          projects,is_public = is_public,order_by = order_by,page = page,page_size = page_size)
+  searchExp <- operations$searchExperiments(name =name , year =year ,
+                                            is_ended = is_ended,
+                                            species = species,factors = factors,
+                                            projects = projects,is_public = is_public,
+                                            order_by = order_by,
+                                            page = page, page_size = page_size)
   resultExp <- opensilexWSClientR::getDataAndMetadataFromResponse(searchExp)  
   
   transformedData = data.table::rbindlist(

@@ -7,20 +7,27 @@
 connectToOpenSILEX(identifier = NULL, password = NULL, url = NULL)
 }
 \arguments{
-\item{identifier}{e-mail of the user to create the token}
+\item{identifier}{character, e-mail of the user to create the token}
 
-\item{password}{password of the user to create the token}
+\item{password}{character, password of the user to create the token}
 
 \item{url}{character, if apiID is private add the url of the chosen API,
 containing the IP, the full url with the protocol. e.g.
 'http://www.opensilex.org/rest/'}
 }
 \description{
-load name space and connexion parameters of the webservice.
+load name space and connection parameters of the Web Service.
   Execute only once at the beginning of the requests. In the case of a
   WebService change of address or a renaming of services, please edit this
   list. and execute the function. Demonstration instances :
   \describe{
   connectToOpenSILEX(identifier="guest@opensilex.org",password="guest", url
   = "http://www.opensilex.org/openSilexAPI/rest/") }
+}
+\examples{
+\donttest{
+ connectToOpenSILEX(identifier="guest@opensilex.org",
+                    password="guest", 
+                    url= "http://www.opensilex.org/openSilexAPI/rest/")
+}
 }

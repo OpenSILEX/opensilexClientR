@@ -3,7 +3,7 @@
 # Objective: functions to facilitate connection on OpenSILEX web service
 # Author: A. Charleroy
 # Creation: 27/04/2021
-# Update: 27/04/2021 (A.Charleroy)
+# Update: 27/04/2021 (A.Charleroy) - 17/05/2021 (IS)
 #-------------------------------------------------------------------------------
 
 
@@ -11,16 +11,22 @@
 ##' @param url character, if apiID is private add the url of the chosen API,
 ##'   containing the IP, the full url with the protocol. e.g.
 ##'   'http://www.opensilex.org/rest/'
-##' @param identifier e-mail of the user to create the token
-##' @param password password of the user to create the token
+##' @param identifier character, e-mail of the user to create the token
+##' @param password character, password of the user to create the token
 ##' @import opensilexWSClientR
-##' @description load name space and connexion parameters of the webservice.
+##' @description load name space and connection parameters of the Web Service.
 ##'   Execute only once at the beginning of the requests. In the case of a
 ##'   WebService change of address or a renaming of services, please edit this
 ##'   list. and execute the function. Demonstration instances :
 ##'   \describe{
 ##'   connectToOpenSILEX(identifier="guest@opensilex.org",password="guest", url
 ##'   = "http://www.opensilex.org/openSilexAPI/rest/") }
+##' @examples 
+##' \donttest{
+##'  connectToOpenSILEX(identifier="guest@opensilex.org",
+##'                     password="guest", 
+##'                     url= "http://www.opensilex.org/openSilexAPI/rest/")
+##' }
 ##' @export
 connectToOpenSILEX<-function( identifier = NULL, password = NULL, url = NULL){
   
