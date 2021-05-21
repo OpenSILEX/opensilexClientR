@@ -17,8 +17,7 @@ Depends:
 License: GPL-3 | file LICENSE
 LazyData: TRUE
 Remotes: github::opensilex/opensilex-ws-client-r@2.2.0, github::opensilex/opensilexclienttoolsr@master
-Imports: 
-    validate,
+Imports:
     tibble,
     ggplot2,
     tidyr,
