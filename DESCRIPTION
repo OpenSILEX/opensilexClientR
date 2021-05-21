@@ -30,8 +30,7 @@ Imports:
     urltools,
     logging,
     openssl, 
-    magrittr,
-    tibble
+    magrittr 
 Suggests:
     roxygen2,
     knitr,

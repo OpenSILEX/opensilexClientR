@@ -114,12 +114,12 @@ getExperiments <- function(name = "", year = "",is_ended = NULL,species = list()
                            order_by = "name=asc",page = NULL,page_size = NULL){
   # set Page
   if(is.null(page)){
-    page  <- get("DEFAULT_PAGE", opensilexClientR::configWS)
+    page  <- get("DEFAULT_PAGE", opensilexClientR::getConfig())
   }
   
   # set pageSize
   if(is.null(page_size)){
-    page_size <- get("DEFAULT_PAGESIZE",  opensilexClientR::configWS)
+    page_size <- get("DEFAULT_PAGESIZE",  opensilexClientR::getConfig())
   }
   
   operations <- opensilexWSClientR::getOperations()

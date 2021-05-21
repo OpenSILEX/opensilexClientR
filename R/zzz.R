@@ -17,8 +17,7 @@
 #   configWS <- list( 
 #                    DEFAULT_PAGE = 0,
 #                    DEFAULT_PAGESIZE = 100)
-
-# Define an environment for the phenomeapi configuration
+## Define an environment for the opensilex configuration
 configWS<-new.env(emptyenv())
 
 .onLoad <- function(libname, pkgname){
@@ -29,5 +28,13 @@ configWS<-new.env(emptyenv())
   debugLevel <-list(CRITICAL = 50, ERROR = 40,
                     WARNING = 30, INFO = 20,
                     DEBUG = 10, NOTSET = 0)
-  assign("DEBUG_LEVEL", debugLevel, configWS)
+  assign("DEBUG_LEVEL", debugLevel, configWS) 
 }
+
+##' @title getConfig 
+##' get config
+##' @export
+getConfig <- function(){
+  return(configWS)
+}
+
