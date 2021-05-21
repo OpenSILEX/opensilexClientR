@@ -18,6 +18,8 @@ License: GPL-3 | file LICENSE
 LazyData: TRUE
 Remotes: github::opensilex/opensilex-ws-client-r@2.2.0, github::opensilex/opensilexclienttoolsr@master
 Imports: 
+    validate,
+    tibble,
     ggplot2,
     tidyr,
     dplyr,
@@ -27,8 +29,8 @@ Imports:
     httr,
     urltools,
     logging,
-    openssl,
-    wicket,
+    openssl, 
+    magrittr,
     tibble
 Suggests:
     roxygen2,
