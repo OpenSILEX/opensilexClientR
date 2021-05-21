@@ -102,9 +102,9 @@ getVariablesByExperiment <- function( uri = NULL){
 ##'          request on OpenSILEX web service.
 ##' @examples
 ##' \donttest{
-##'  connectToOpenSILEXWS(username = "guest@opensilex.org",
-##'                       password = "guest",
-##'                       url = "http:/localhost:8666/rest")
+ # connectToOpenSILEXWS(username = "admin@opensilex.org",
+ #                      password = "admin",
+ #                      url = "http:/localhost:8666/rest")
 ##'  expes <- getExperiments()
 ##'  expes$data
 ##' }
@@ -114,12 +114,12 @@ getExperiments <- function(name = "", year = "",is_ended = NULL,species = list()
                            order_by = "name=asc",page = NULL,page_size = NULL){
   # set Page
   if(is.null(page)){
-    page  <- get("DEFAULT_PAGE", opensilexWSClientR:::configWS)
+    page  <- get("DEFAULT_PAGE", opensilexClientR::configWS)
   }
   
   # set pageSize
   if(is.null(page_size)){
-    page_size <- get("DEFAULT_PAGESIZE",  opensilexWSClientR:::configWS)
+    page_size <- get("DEFAULT_PAGESIZE",  opensilexClientR::configWS)
   }
   
   operations <- opensilexWSClientR::getOperations()
