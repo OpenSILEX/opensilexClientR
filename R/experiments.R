@@ -6,39 +6,39 @@
 # Update: 17/05/2021 (by I.Sanchez)
 #-------------------------------------------------------------------------------
 
-# ##' @title getExperimentDesign
-# ##'
-# ##' @description retrieves the informations for one experiment
-# ##' @param uri URI of the experiment
-# ##' @return WSResponse object
-# ##' @seealso http://docs.brapi.apiary.io/#introduction/url-structure
-# ##' @details You have to execute the \code{\link{connectToOpenSILEXWS}} function first to have access to the web
-# ##' service
-# ##' @seealso You have to install the opensilexWSClientR before running any 
-# ##'          request on OpenSILEX web service.
-# ##' @examples
-# ##' \donttest{
-# ##'  connectToOpenSILEXWS( 
-# ##'                  username = "guestopensilex.org",
-# ##'                   password = "guest",
-# ##'           url = "http:/localhost:8666/rest")
-# ##'  Exp1<-getExperiment(
-# ##'         experimentURI ="test-expe:test-serre")
-# ##'  Exp1$data
-# ##' }
-# ##' @export
-# getExperimentDesign <- function( uri = NULL){
-#   if (is.null(uri) || uri == "" ){
-#     stop("no uri provided")
-#   } else {
-#     
-#     operations <- opensilexWSClientR::getOperations()
-#     searchByExp <- operations$getExperiment(uri = uri)
-#     resultByExp <- opensilexWSClientR::getDataAndMetadataFromResponse(searchByExp)  
-#  
-#     return(resultByExp)
-#   }
-# }
+##' @title getExperimentDesign
+##'
+##' @description retrieves the informations for one experiment
+##' @param uri URI of the experiment
+##' @return WSResponse object
+##' @seealso http://docs.brapi.apiary.io/#introduction/url-structure
+##' @details You have to execute the \code{\link{connectToOpenSILEXWS}} function first to have access to the web
+##' service
+##' @seealso You have to install the opensilexWSClientR before running any 
+##'          request on OpenSILEX web service.
+##' @examples
+##' \donttest{
+##'  connectToOpenSILEX(
+##'     identifier="guest@opensilex.org",
+##'     password="guest", 
+##'     url= "http://www.opensilex.org/openSilexAPI/rest/") 
+##'  Exp1<-getExperiment(
+##'         experimentURI ="test-expe:test-serre")
+##'  Exp1$data
+##' }
+##' @export
+getExperimentDesign <- function( uri = NULL){
+  if (is.null(uri) || uri == "" ){
+    stop("no uri provided")
+  } else {
+    
+    operations <- opensilexWSClientR::getOperations()
+    searchByExp <- operations$getExperiment(uri = uri)
+    resultByExp <- opensilexWSClientR::getDataAndMetadataFromResponse(searchByExp)  
+ 
+    return(resultByExp)
+  }
+}
 
 #' @title getVariablesByExperiment
 ##'
@@ -52,9 +52,10 @@
 ##'          request on OpenSILEX web service.
 ##' @examples
 ##' \donttest{
-##'  connectToOpenSILEXWS(username = "guest@opensilex.org",
-##'                       password = "guest",
-##'                       url = "http:/localhost:8666/rest")
+##'  connectToOpenSILEX(
+##'     identifier="guest@opensilex.org",
+##'     password="guest", 
+##'     url= "http://www.opensilex.org/openSilexAPI/rest/") 
 ##'  ExpVar<-getExperiment(experimentURI ="test-expe:test-serre")
 ##'  ExpVar$data
 ##' }

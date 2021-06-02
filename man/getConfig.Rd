@@ -3,11 +3,13 @@
 \name{getConfig}
 \alias{getConfig}
 \title{getConfig 
-get config}
+get config
+keywords @internal}
 \usage{
 getConfig()
 }
 \description{
 getConfig 
 get config
+keywords @internal
 }

@@ -23,12 +23,13 @@
 ##'   = "http://www.opensilex.org/openSilexAPI/rest/") }
 ##' @examples 
 ##' \donttest{
-##'  connectToOpenSILEX(identifier="guest@opensilex.org",
-##'                     password="guest", 
-##'                     url= "http://www.opensilex.org/openSilexAPI/rest/")
+##'  connectToOpenSILEX(
+##'     identifier="guest@opensilex.org",
+##'     password="guest", 
+##'     url= "http://www.opensilex.org/openSilexAPI/rest/")
 ##' }
 ##' @export
-connectToOpenSILEX<-function( identifier = NULL, password = NULL, url = NULL){
+connectToOpenSILEX<-function(identifier = NULL, password = NULL, url = NULL){
   
   # configWS is an environment with specific variables to opensilex web service
   # if apiID is private, we use the url given by the user
@@ -42,7 +43,7 @@ connectToOpenSILEX<-function( identifier = NULL, password = NULL, url = NULL){
     if(is.null(url)){
       stop("Please, give an OpenSILEX WS full URL")
     } 
-  opensilexWSClientR::connectToOpenSILEXWS(username = identifier,
+  opensilexWSClientR::connectToOpenSILEXWS(identifier  = identifier,
                                            password = password,
                                            url = url)
 

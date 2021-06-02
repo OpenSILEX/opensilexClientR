@@ -11,12 +11,12 @@ Description: a set of functions to connect R to the opensilex web service API in
    from experiment. If the user has an account on an instance of an OPENSILEX system information.
 Depends:
     R (>= 3.2.0),
-    opensilexWSClientR (>= 2.2.0),
-    opensilexClientToolsR,
+    opensilexWSClientR (>= 3.0.0),
+    opensilexClientToolsR  (>= 2.0.0),
     data.table
 License: GPL-3 | file LICENSE
 LazyData: TRUE
-Remotes: github::opensilex/opensilex-ws-client-r@2.2.0, github::opensilex/opensilexclienttoolsr@master
+Remotes: github::opensilex/opensilex-ws-client-r@3.0.0, github::opensilex/opensilexclienttoolsr@2.0.0
 Imports:
     tibble,
     ggplot2,

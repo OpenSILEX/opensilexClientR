@@ -26,8 +26,9 @@ load name space and connection parameters of the Web Service.
 }
 \examples{
 \donttest{
- connectToOpenSILEX(identifier="guest@opensilex.org",
-                    password="guest", 
-                    url= "http://www.opensilex.org/openSilexAPI/rest/")
+ connectToOpenSILEX(
+    identifier="guest@opensilex.org",
+    password="guest", 
+    url= "http://www.opensilex.org/openSilexAPI/rest/")
 }
 }

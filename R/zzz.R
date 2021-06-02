@@ -33,7 +33,7 @@ configWS<-new.env(emptyenv())
 
 ##' @title getConfig 
 ##' get config
-##' @export
+##' keywords @internal
 getConfig <- function(){
   return(configWS)
 }
