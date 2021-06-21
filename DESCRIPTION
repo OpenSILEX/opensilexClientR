@@ -1,6 +1,6 @@
 Package: opensilexClientR
 Title: opensilex Client R
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: c(
     person("Arnaud", "Charleroy", email = "arnaud.charleroy@inrae.fr", role = "cre"),
     person("Isabelle", "Sanchez", email = "isabelle.sanchez@inrae.fr", role = "aut"),
@@ -13,7 +13,9 @@ Depends:
     R (>= 3.2.0),
     opensilexWSClientR (>= 3.0.0),
     opensilexClientToolsR  (>= 2.0.0),
-    data.table
+    data.table,
+    readr, 
+    magrittr 
 License: GPL-3 | file LICENSE
 LazyData: TRUE
 Remotes: github::opensilex/opensilex-ws-client-r@3.0.0, github::opensilex/opensilexclienttoolsr@2.0.0
@@ -28,8 +30,7 @@ Imports:
     httr,
     urltools,
     logging,
-    openssl, 
-    magrittr 
+    openssl
 Suggests:
     roxygen2,
     knitr,

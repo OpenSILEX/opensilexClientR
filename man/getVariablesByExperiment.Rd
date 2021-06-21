@@ -24,7 +24,7 @@ Service
  connectToOpenSILEX(
     identifier="guest@opensilex.org",
     password="guest", 
-    url= "http://www.opensilex.org/openSilexAPI/rest/") 
+    url= "http://www.opensilex.org/openSilexAPI/rest") 
  ExpVar<-getExperiment(experimentURI ="test-expe:test-serre")
  ExpVar$data
 }

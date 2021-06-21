@@ -31,7 +31,7 @@ DateTime,http://www.opensilex.org/sunagri/id/variables/v082,http://www.opensilex
 \donttest{
 connectToOpenSILEX( identifier="guest@opensilex.org",
               password="guest"
-              url = "http://www.opensilex.org/openSilexAPI/rest/",)
+              url = "http://www.opensilex.org/openSilexAPI/rest",)
   addSensorDataByCSV(
   start_column = 2,
   delimiter = ",",
@@ -42,11 +42,11 @@ connectToOpenSILEX( identifier="guest@opensilex.org",
 }
 CSV example with Scientific object
 
-,Method,Air_temperature_20min_instant
-,Unit,Celsius_degree
-,Entity + characteristic,Canopy_air_temperature
-,Sensor,sunagri:2020/s20031
-DateTime,Scientific_object;sunagri:id/variables/v151
+;Method;Air_temperature_20min_instant
+;Unit,Celsius_degree
+;Entity + characteristic;Canopy_air_temperature
+;Sensor;sunagri:2020/s20031
+DateTime;Scientific_object;sunagri:id/variables/v151
 2019-05-20T15:40:00Z;sunagri:2019/o19064783;19.971676
 2019-05-20T16:00:00Z;sunagri:2019/o19064783;20.224501
 2019-05-20T16:20:00Z;sunagri:2019/o19064783;19.466026
@@ -54,7 +54,7 @@ DateTime,Scientific_object;sunagri:id/variables/v151
 \donttest{
 connectToOpenSILEX( identifier="guest@opensilex.org",
               password="guest"
-              url = "http://www.opensilex.org/openSilexAPI/rest/",)
+              url = "http://www.opensilex.org/openSilexAPI/rest",)
   addSensorDataByCSV(
   start_column = 3,
   delimiter = ",",

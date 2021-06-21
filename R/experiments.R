@@ -21,7 +21,7 @@
 ##'  connectToOpenSILEX(
 ##'     identifier="guest@opensilex.org",
 ##'     password="guest", 
-##'     url= "http://www.opensilex.org/openSilexAPI/rest/") 
+##'     url= "http://www.opensilex.org/openSilexAPI/rest") 
 ##'  Exp1<-getExperiment(
 ##'         experimentURI ="test-expe:test-serre")
 ##'  Exp1$data
@@ -55,7 +55,7 @@ getExperimentDesign <- function( uri = NULL){
 ##'  connectToOpenSILEX(
 ##'     identifier="guest@opensilex.org",
 ##'     password="guest", 
-##'     url= "http://www.opensilex.org/openSilexAPI/rest/") 
+##'     url= "http://www.opensilex.org/openSilexAPI/rest") 
 ##'  ExpVar<-getExperiment(experimentURI ="test-expe:test-serre")
 ##'  ExpVar$data
 ##' }
